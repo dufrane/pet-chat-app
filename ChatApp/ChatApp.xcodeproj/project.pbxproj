@@ -82,8 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				9D03CA3B29138DE9004A3898 /* ConversationsViewController.swift */,
-				9DE36CF6291A1FF9004627D0 /* LoginViewController.swift */,
-				9DE36CF8291A2014004627D0 /* RegisterViewController.swift */,
+				9DE36D02291A2205004627D0 /* Login */,
 				9DE36CFA291A2044004627D0 /* PhotoViewerViewController.swift */,
 				9DE36CFC291A2050004627D0 /* VideoPlayerViewController.swift */,
 				9DE36CFE291A207D004627D0 /* NewConversationViewController.swift */,
@@ -131,6 +130,15 @@
 				9D03CA4229138DEC004A3898 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9DE36D02291A2205004627D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9DE36CF6291A1FF9004627D0 /* LoginViewController.swift */,
+				9DE36CF8291A2014004627D0 /* RegisterViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GFXMVZ7W43;
@@ -375,6 +384,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.homeMade.ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
