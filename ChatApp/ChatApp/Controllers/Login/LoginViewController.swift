@@ -73,6 +73,13 @@ class LoginViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTapRegister))
+        
+        loginButton.addTarget(self,
+                              action: #selector(loginButtonTapped),
+                              for: .touchUpInside)
+        emailField.delegate = self
+        passwordField.delegate = self
+        
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
@@ -97,10 +104,32 @@ class LoginViewController: UIViewController {
                                      width: scrollView.width - 60,
                                      height: 52)
         loginButton.frame = CGRect(x: 30,
-                                     y: passwordField.bottom + 10,
-                                     width: scrollView.width - 60,
-                                     height: 52)
+                                   y: passwordField.bottom + 10,
+                                   width: scrollView.width - 60,
+                                   height: 52)
         
+    }
+    
+    @objc private func loginButtonTapped() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              !email.isEmpty,
+              !password.isEmpty,
+              password.count >= 6
+        else {
+            alertUserLoginError()
+            return
+        }
+    }
+    
+    private func alertUserLoginError() {
+        let alert = UIAlertController(title: "Ah no", message: "Please enter all information to log in.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dissmis", style: .cancel))
+        present(alert, animated: true)
     }
     
     @objc private func didTapRegister() {
@@ -109,4 +138,18 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            loginButtonTapped()
+        }
+        return true
+    }
 }
